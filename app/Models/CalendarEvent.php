@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $end_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CalendarEventDay[] $days
  * @method static Builder|CalendarEvent newModelQuery()
  * @method static Builder|CalendarEvent newQuery()
  * @method static Builder|CalendarEvent query()
@@ -21,5 +22,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class CalendarEvent extends BaseModel
 {
-
+    public function days(): HasMany
+    {
+        return $this->hasMany(CalendarEventDay::class);
+    }
 }
