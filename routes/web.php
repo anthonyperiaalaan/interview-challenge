@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebApi\CalendarEventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::group(['prefix' => 'web-api'], function () {
+    Route::apiResource('calendar-event', CalendarEventController::class)
+        ->only('index', 'store');
+});
 
 Route::get('/', function () {
     return view('welcome');
