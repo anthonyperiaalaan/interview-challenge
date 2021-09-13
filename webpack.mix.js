@@ -13,9 +13,15 @@ const config = require('./webpack.config')
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ])
+    .sass('resources/css/app.scss', 'public/css')
+    .options({
+        postCss: [
+            require('postcss-easy-import'),
+            require('tailwindcss'),
+            require('autoprefixer'),
+        ],
+    })
     .vue()
+    .sourceMaps(false)
     .version()
     .webpackConfig(config)
