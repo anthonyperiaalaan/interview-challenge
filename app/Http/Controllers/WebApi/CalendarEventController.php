@@ -6,14 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\WebApi\CalendarEvent\StoreRequest;
 use App\Http\Resources\CalendarEvent as CalendarEventResource;
 use App\Models\CalendarEvent;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class CalendarEventController extends Controller
 {
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        //
+        return CalendarEventResource::collection(CalendarEvent::all());
     }
 
     public function store(StoreRequest $request): CalendarEventResource
