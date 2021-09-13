@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~element-ui/lib/theme-chalk/index.css';
+
 [v-cloak] {
     display: none;
 }
