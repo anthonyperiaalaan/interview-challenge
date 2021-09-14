@@ -3,6 +3,7 @@
 namespace Tests\Feature\CalendarEvent;
 
 use App\Models\CalendarEvent;
+use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Tests\TestCase;
@@ -78,5 +79,19 @@ class CreateCalendarEventTest extends TestCase
                 ]
             );
         }
+    }
+
+    public function testHasRequiredFields()
+    {
+        $this->postJson('/web-api/calendar-event', [])
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertInvalid(
+                [
+                    'title' => 'required',
+                    'start_date' => 'required',
+                    'end_date' => 'required',
+                    'days' => 'required',
+                ]
+            );
     }
 }
