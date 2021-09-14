@@ -94,4 +94,15 @@ class CreateCalendarEventTest extends TestCase
                 ]
             );
     }
+
+    public function testTitleMustBeAString()
+    {
+        $this->postJson('/web-api/calendar-event', ['title' => 1234])
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertInvalid(
+                [
+                    'title' => 'string',
+                ]
+            );
+    }
 }
