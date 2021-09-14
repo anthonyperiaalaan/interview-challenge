@@ -184,4 +184,20 @@ class CreateCalendarEventTest extends TestCase
                 ]
             );
     }
+
+    public function testDayMustBeAValidDayOfWeek()
+    {
+        $payload = [
+            'days' => [-1, 7]
+        ];
+
+        $this->postJson('/web-api/calendar-event', $payload)
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertInvalid(
+                [
+                    'days.0' => 'must be a valid day of week',
+                    'days.1' => 'must be a valid day of week',
+                ]
+            );
+    }
 }
