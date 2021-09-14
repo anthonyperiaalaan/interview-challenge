@@ -105,4 +105,19 @@ class CreateCalendarEventTest extends TestCase
                 ]
             );
     }
+
+    public function testTitleHasAMaxCharacterCountOf255()
+    {
+        $this->postJson('/web-api/calendar-event', ['title' => str_repeat('a', 256)])
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertInvalid(
+                [
+                    'title' => 'must not be greater than 255 characters',
+                ]
+            );
+
+        $this->postJson('/web-api/calendar-event', ['title' => str_repeat('a', 255)])
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertValid('title');
+    }
 }
