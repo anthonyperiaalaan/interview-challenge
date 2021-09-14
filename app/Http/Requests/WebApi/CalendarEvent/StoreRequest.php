@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'end_date' => [
                 'required',
                 'date_format:Y-m-d',
-                'gte:start_date',
+                'after_or_equal:start_date',
             ],
             'days' => [
                 'required',
