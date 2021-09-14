@@ -71,9 +71,9 @@
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
 import { get } from 'lodash'
-import FormInput from '../form/FormInput'
-import FormGroup from '../form/FormGroup'
-import FormDateRangeInput from '../form/FormDateRangeInput'
+import FormInput from '@/components/form/FormInput'
+import FormGroup from '@/components/form/FormGroup'
+import FormDateRangeInput from '@/components/form/FormDateRangeInput'
 import { SET_EVENT_FORM_FIELD } from '@/store/mutations'
 import DayOfWeekCheckboxGroup from '@/components/calendar-event/DayOfWeekCheckboxGroup'
 import { FETCH_EVENTS, SAVE_EVENT } from '@/store/actions'

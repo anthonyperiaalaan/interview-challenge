@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import FormCheckboxGroup from '../form/FormCheckboxGroup'
+import FormCheckboxGroup from '@/components/form/FormCheckboxGroup'
 import { daysOfWeek } from '@/utils/date'
 
 export default {

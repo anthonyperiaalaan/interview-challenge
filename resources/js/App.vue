@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import CalendarEventForm from './components/calendar-event/CalendarEventForm'
+import CalendarEventForm from '@/components/calendar-event/CalendarEventForm'
 import CalendarEventList from '@/components/calendar-event/CalendarEventList'
 
 export default {
