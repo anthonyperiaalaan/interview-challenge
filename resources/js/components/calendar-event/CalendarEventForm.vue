@@ -59,6 +59,7 @@
         <el-button
           type="primary"
           native-type="submit"
+          :loading="savingEvent"
           >
           Save
         </el-button>
@@ -68,19 +69,22 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
+import { get } from 'lodash'
 import FormInput from '../form/FormInput'
 import FormGroup from '../form/FormGroup'
 import FormDateRangeInput from '../form/FormDateRangeInput'
 import { SET_EVENT_FORM_FIELD } from '@/store/mutations'
 import DayOfWeekCheckboxGroup from '@/components/calendar-event/DayOfWeekCheckboxGroup'
+import { SAVE_EVENT } from '@/store/actions'
+import { UNPROCESSABLE_ENTITY } from '@/constants/http-status-codes'
 
 export default {
   components: {
     DayOfWeekCheckboxGroup, FormDateRangeInput, FormGroup, FormInput,
   },
   computed: {
-    ...mapState(['eventForm']),
+    ...mapState(['eventForm', 'savingEvent']),
     dateRange: {
       get() {
         if (!this.eventForm.start_date) {
@@ -100,11 +104,28 @@ export default {
   },
   methods: {
     ...mapMutations([SET_EVENT_FORM_FIELD]),
+    ...mapActions([SAVE_EVENT]),
     onInput(key, value) {
       this[SET_EVENT_FORM_FIELD]({ key, value })
     },
-    submit() {
-      console.log('nice')
+    async submit() {
+      try {
+        await this[SAVE_EVENT]()
+        this.$notify.success({
+          title: 'Success',
+          message: 'Calendar event has been saved.',
+        })
+      } catch (e) {
+        const status = get(e, 'response.status')
+        if (status === UNPROCESSABLE_ENTITY) {
+          this.$refs.form.setErrors(e.response.data.errors)
+        } else {
+          this.$notify.error({
+            title: 'Oops!',
+            message: 'Something happened unexpectedly.',
+          })
+        }
+      }
     },
   },
 }
