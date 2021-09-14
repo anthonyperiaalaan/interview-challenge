@@ -76,7 +76,7 @@ import FormGroup from '../form/FormGroup'
 import FormDateRangeInput from '../form/FormDateRangeInput'
 import { SET_EVENT_FORM_FIELD } from '@/store/mutations'
 import DayOfWeekCheckboxGroup from '@/components/calendar-event/DayOfWeekCheckboxGroup'
-import { SAVE_EVENT } from '@/store/actions'
+import { FETCH_EVENTS, SAVE_EVENT } from '@/store/actions'
 import { UNPROCESSABLE_ENTITY } from '@/constants/http-status-codes'
 
 export default {
@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     ...mapMutations([SET_EVENT_FORM_FIELD]),
-    ...mapActions([SAVE_EVENT]),
+    ...mapActions([SAVE_EVENT, FETCH_EVENTS]),
     onInput(key, value) {
       this[SET_EVENT_FORM_FIELD]({ key, value })
     },
@@ -115,6 +115,7 @@ export default {
           title: 'Success',
           message: 'Calendar event has been saved.',
         })
+        this[FETCH_EVENTS]()
       } catch (e) {
         const status = get(e, 'response.status')
         if (status === UNPROCESSABLE_ENTITY) {
