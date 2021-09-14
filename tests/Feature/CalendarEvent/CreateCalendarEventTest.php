@@ -137,4 +137,21 @@ class CreateCalendarEventTest extends TestCase
                 ]
             );
     }
+
+    public function testEndDateMustBeAfterOrEqualToStartDate()
+    {
+        $payload = [
+            'start_date' => now()->toDateString(),
+            'end_date' => now()->subDay()->toDateString(),
+        ];
+
+        $this->postJson('/web-api/calendar-event', $payload)
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertValid('start_date')
+            ->assertInvalid(
+                [
+                    'end_date' => 'must be a date after or equal to start date',
+                ]
+            );
+    }
 }
