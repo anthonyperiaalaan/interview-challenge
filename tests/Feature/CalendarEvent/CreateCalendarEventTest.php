@@ -120,4 +120,21 @@ class CreateCalendarEventTest extends TestCase
             ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
             ->assertValid('title');
     }
+
+    public function testStartDateAndEndDateMustBeValidDateFormat()
+    {
+        $payload = [
+            'start_date' => 'Jan 1, 2001',
+            'end_date' => $this->faker->dateTime()->format('Y-m-d H:i:s'),
+        ];
+
+        $this->postJson('/web-api/calendar-event', $payload)
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertInvalid(
+                [
+                    'start_date' => 'does not match the format Y-m-d',
+                    'end_date' => 'does not match the format Y-m-d',
+                ]
+            );
+    }
 }
