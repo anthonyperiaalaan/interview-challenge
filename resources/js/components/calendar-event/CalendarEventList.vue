@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex items-center space-x-5">
+    <div class="flex items-center space-x-5 mb-3">
       <h1 class="text-2xl font-bold">
         {{ startDate.format('MMM YYYY') }}
       </h1>
