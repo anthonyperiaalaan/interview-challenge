@@ -21,6 +21,7 @@
         "eslint-plugin-vue": "^7.17.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
+        "moment": "^2.29.1",
         "postcss": "^8.1.14",
         "postcss-easy-import": "^3.0.0",
         "resolve-url-loader": "^4.0.0",
