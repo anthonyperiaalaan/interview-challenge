@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold">
-      {{ startDate.format('MMM YYYY') }}
-    </h1>
+    <div class="flex items-center space-x-5">
+      <h1 class="text-2xl font-bold">
+        {{ startDate.format('MMM YYYY') }}
+      </h1>
+      <span v-show="fetchingEvents">Loading...</span>
+    </div>
     <CalendarEventListItem
       v-for="date in dates"
       :key="date.date()"
