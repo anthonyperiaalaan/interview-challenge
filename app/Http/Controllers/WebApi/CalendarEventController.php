@@ -21,6 +21,15 @@ class CalendarEventController extends Controller
     {
         $event = DB::transaction(
             function () use ($request) {
+                if ($request->get('delete-existing')) {
+                    CalendarEvent::get()
+                        ->each(
+                            function (CalendarEvent $calendarEvent) {
+                                $calendarEvent->delete();
+                            }
+                        );
+                }
+
                 $event = CalendarEvent::create(
                     Arr::only(
                         $request->validated(),
