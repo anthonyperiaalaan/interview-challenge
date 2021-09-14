@@ -169,4 +169,19 @@ class CreateCalendarEventTest extends TestCase
                 ]
             );
     }
+
+    public function testDaysMustNotBeEmpty()
+    {
+        $payload = [
+            'days' => []
+        ];
+
+        $this->postJson('/web-api/calendar-event', $payload)
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertInvalid(
+                [
+                    'days' => 'required',
+                ]
+            );
+    }
 }
