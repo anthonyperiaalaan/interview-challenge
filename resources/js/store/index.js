@@ -16,6 +16,8 @@ export default new Vuex.Store({
   state: {
     eventForm: newEventForm(),
     savingEvent: false,
+    events: [],
+    fetchingEvents: false,
   },
   mutations,
   actions,
