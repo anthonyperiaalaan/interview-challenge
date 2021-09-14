@@ -154,4 +154,19 @@ class CreateCalendarEventTest extends TestCase
                 ]
             );
     }
+
+    public function testDaysMustBeAnArray()
+    {
+        $payload = [
+            'days' => 1
+        ];
+
+        $this->postJson('/web-api/calendar-event', $payload)
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertInvalid(
+                [
+                    'days' => 'must be an array',
+                ]
+            );
+    }
 }
