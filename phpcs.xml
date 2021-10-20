@@ -10,6 +10,6 @@
     <exclude-pattern>*.vue</exclude-pattern>
     <exclude-pattern>*.scss</exclude-pattern>
 
-    <rule ref="PSR12"/>
+    <rule ref="PSR2"/>
 
 </ruleset>
