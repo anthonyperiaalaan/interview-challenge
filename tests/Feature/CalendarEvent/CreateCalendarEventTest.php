@@ -36,7 +36,7 @@ class CreateCalendarEventTest extends TestCase
             $this->assertDatabaseHas(
                 'calendar_event_days',
                 [
-                    'calendar_event_id' => $response->json('data.id'),
+                    'calendar_event_id' => $response->json('data.calendar_event_id'),
                     'day' => $day,
                 ]
             );
@@ -74,7 +74,7 @@ class CreateCalendarEventTest extends TestCase
             $this->assertDatabaseHas(
                 'calendar_event_days',
                 [
-                    'calendar_event_id' => $response->json('data.id'),
+                    'calendar_event_id' => $response->json('data.calendar_event_id'),
                     'day' => $day,
                 ]
             );

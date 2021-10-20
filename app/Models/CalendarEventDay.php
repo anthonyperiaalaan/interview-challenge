@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * App\Models\CalendarEventDay
  *
- * @property int $id
+ * @property int $calendar_event_day_id
  * @property int $calendar_event_id
  * @property int $day
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -19,5 +19,5 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class CalendarEventDay extends BaseModel
 {
-
+    protected $primaryKey = 'calendar_event_day_id';
 }

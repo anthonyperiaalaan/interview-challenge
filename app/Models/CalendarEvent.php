@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * App\Models\CalendarEvent
  *
- * @property int $id
+ * @property int $calendar_event_id
  * @property string $title
  * @property string $start_date
  * @property string $end_date
@@ -22,8 +22,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class CalendarEvent extends BaseModel
 {
+    protected $primaryKey = 'calendar_event_id';
+
     public function days(): HasMany
     {
-        return $this->hasMany(CalendarEventDay::class);
+        return $this->hasMany(CalendarEventDay::class, 'calendar_event_id');
     }
 }

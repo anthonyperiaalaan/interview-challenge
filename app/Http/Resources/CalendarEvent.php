@@ -14,7 +14,7 @@ class CalendarEvent extends JsonResource
     public function toArray($request): array
     {
         return array_merge(
-            $this->resource->only('id', 'title', 'start_date', 'end_date', 'created_at', 'updated_at'),
+            $this->resource->only('calendar_event_id', 'title', 'start_date', 'end_date', 'created_at', 'updated_at'),
             [
                 'days' => $this->resource->days->pluck('day')->all(),
             ]

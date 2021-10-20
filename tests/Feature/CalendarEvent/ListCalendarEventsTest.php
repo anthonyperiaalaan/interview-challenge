@@ -22,7 +22,7 @@ class ListCalendarEventsTest extends TestCase
                 [
                     'data' => [
                         [
-                            'id',
+                            'calendar_event_id',
                             'title',
                             'start_date',
                             'end_date',
@@ -41,7 +41,7 @@ class ListCalendarEventsTest extends TestCase
                                 Arr::only(
                                     $calendarEvent->toArray(),
                                     [
-                                        'id',
+                                        'calendar_event_id',
                                         'title',
                                         'start_date',
                                         'end_date',

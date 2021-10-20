@@ -30,7 +30,7 @@ class CalendarEventFactory extends Factory
                     CalendarEventDay::factory()
                         ->create(
                             [
-                                'calendar_event_id' => $calendarEvent->id,
+                                'calendar_event_id' => $calendarEvent->calendar_event_id,
                                 'day' => $day,
                             ]
                         );
