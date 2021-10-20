@@ -9,18 +9,23 @@
         "prod": "npm run production",
         "production": "mix --production",
         "eslint": "./node_modules/.bin/eslint resources/js/ --ext .js,.vue",
-        "eslint-fix": "./node_modules/.bin/eslint resources/js/ --ext .js,.vue --fix"
+        "eslint-fix": "./node_modules/.bin/eslint resources/js/ --ext .js,.vue --fix",
+        "test": "jest"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.3.3",
         "@vue/eslint-config-airbnb": "^5.3.0",
+        "@vue/test-utils": "^1.2.2",
         "axios": "^0.21",
+        "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.1.0",
+        "babel-jest": "^27.2.4",
         "element-ui": "^2.15.6",
         "eslint": "^7.32.0",
         "eslint-config-airbnb-base": "^14.2.1",
         "eslint-plugin-import": "^2.24.2",
         "eslint-plugin-vue": "^7.17.0",
+        "jest": "^27.2.4",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "moment": "^2.29.1",
@@ -32,6 +37,7 @@
         "tailwindcss": "^2.2.15",
         "vee-validate": "^3.4.12",
         "vue": "^2.6.14",
+        "vue-jest": "^3.0.7",
         "vue-loader": "^15.9.7",
         "vue-template-compiler": "^2.6.14",
         "vuex": "^3.6.2"

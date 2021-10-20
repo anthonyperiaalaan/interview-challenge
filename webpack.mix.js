@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
 const config = require('./webpack.config')
 
 /*
@@ -13,15 +13,15 @@ const config = require('./webpack.config')
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/css/app.scss', 'public/css')
-    .options({
-        postCss: [
-            require('postcss-easy-import'),
-            require('tailwindcss'),
-            require('autoprefixer'),
-        ],
-    })
-    .vue()
-    .sourceMaps(false)
-    .version()
-    .webpackConfig(config)
+  .sass('resources/css/app.scss', 'public/css')
+  .options({
+    postCss: [
+      require('postcss-easy-import'),
+      require('tailwindcss'),
+      require('autoprefixer'),
+    ],
+  })
+  .vue()
+  .sourceMaps(false)
+  .version()
+  .webpackConfig(config)
